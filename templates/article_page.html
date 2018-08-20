@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>新闻消息</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="/static/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/static/css/index.css">
+</head>
+<body>
+    <div class="header">
+        <div class="logo">
+            <img src="/static/image/ntu.png" class="ntu img-responsiv">
+            <a href="/"><img src="/static/image/gis.png" class="gis img-responsiv"></a>
+        </div>
+        <div class="navi">
+            <ul class="nav nav-pills">
+              <li role="presentation" class="dropdown">
+                <a href={% url 'survey' %}>
+                  工作室概况
+                </a>
+              </li>
+              <li role="presentation" class="dropdown">
+                <a href="{% url 'inform' %}">
+                  团队信息
+                </a>
+              </li>
+              <li role="presentation" class="dropdown">
+                <a href="{% url 'project' %}">
+                  团队荣誉
+                </a>
+              </li>
+              <li role="presentation" class="dropdown">
+                <a href="{% url 'newsnews' %}">
+                  新闻消息
+                </a>
+              </li>
+              <li role="presentation" class="dropdown">
+                <a href="" >
+                  学习资料
+                </a>
+              </li>
+            </ul>
+        </div>
+    </div>
+    <div class="article_page">
+        <div class="article_content">
+            <h1>{{ article.title }}</h1>
+            <p class="article_time">发布日期：{{ article.add_time.date }}</p>
+            <p class="article_para ">{{ article.content|linebreaksbr }}</p>
+            <div class="article_image"><img src="/{{ article.image }}" width="300px" height="300px"></div>
+        </div>
+    </div>
+    <div class="footer">
+        <img src="/static/image/ntu_logo.png" alt="南通大学" height="50px" width="50px">
+        <ul class="information">
+            <li>地址：江苏省南通市通京大道999号</li>
+            <li>电话：13585217135（周老师）</li>
+            <li>邮箱：tonggis@163.com</li>
+            <li>邮编：226007</li>
+        </ul>
+        <ul class="links text-center">
+            <h4>常用链接</h4>
+            <li><a href="http://www.ntu.edu.cn/">南通大学</a></li>
+            <li><a href="http://geo.ntu.edu.cn/">南通大学地理科学学院</a></li>
+            <li><a href="http://cnki.net/">中国知网</a></li>
+        </ul>
+        <hr/>
+        <p class="Cr text-center">Copyright &copy; NanTong University School of Geography GIS Studio</p>
+    </div>
+</body>
+</html>

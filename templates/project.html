@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>创新项目</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="/static/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/static/css/index.css">
+</head>
+<body>
+    <div class="header">
+        <div class="logo">
+            <img src="/static/image/ntu.png" class="ntu img-responsiv">
+            <a href="/"><img src="/static/image/gis.png" class="gis img-responsiv"></a>
+        </div>
+        <div class="navi">
+            <ul class="nav nav-pills">
+              <li role="presentation" class="dropdown">
+                <a href={% url 'survey' %}>
+                  工作室概况
+                </a>
+              </li>
+              <li role="presentation" class="dropdown">
+                <a href="{% url 'inform' %}">
+                  团队信息
+                </a>
+              </li>
+              <li role="presentation" class="dropdown">
+                <a href="{% url 'project' %}">
+                  团队荣誉
+                </a>
+              </li>
+              <li role="presentation" class="dropdown">
+                <a href="{% url 'newsnews' %}">
+                  新闻消息
+                </a>
+              </li>
+              <li role="presentation" class="dropdown">
+                <a href="" >
+                  学习资料
+                </a>
+              </li>
+            </ul>
+        </div>
+    </div>
+    <div class="project_content">
+        <div class="pro_left">
+          <ul class="list-group">
+            <a href="#" class="list-group-item  active" id="proj" >创新项目</a>
+            <a href="#" class="list-group-item" id="compt">学科竞赛</a>
+            <a href="#" class="list-group-item" id="invent">发明专利</a>
+            <a href="#" class="list-group-item" id="paper">科研论文</a>
+          </ul>
+        </div>
+        <div class="pro_right">
+            <h1 id="pro_tit">大学生创新项目</h1>
+            <hr/>
+            <div id="pro_tb">
+                <table class="altrowstable" id="alternatecolor">
+                <tr>
+                    <th>项目名称</th>
+                    <th>批准时间</th>
+                    <th>团队成员</th>
+                    <th>颁奖部门</th>
+                    <th>项目级别</th>
+                </tr>
+                {% for pro in pro_hor %}
+                <tr>
+                    <td>{{ pro.name }}</td>
+                    <td>{{ pro.date }}</td>
+                    <td>{{ pro.members }}</td>
+                    <td>{{ pro.place }}</td>
+                    <td>{{ pro.grade }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <img src="/static/image/ntu_logo.png" alt="南通大学" height="50px" width="50px">
+        <ul class="information">
+            <li>地址：江苏省南通市通京大道999号</li>
+            <li>电话：13585217135（周老师）</li>
+            <li>邮箱：tonggis@163.com</li>
+            <li>邮编：226007</li>
+        </ul>
+        <ul class="links text-center">
+            <h4>常用链接</h4>
+            <li><a href="http://www.ntu.edu.cn/">南通大学</a></li>
+            <li><a href="http://geo.ntu.edu.cn/">南通大学地理科学学院</a></li>
+            <li><a href="http://cnki.net/">中国知网</a></li>
+        </ul>
+        <hr/>
+        <p class="Cr text-center">Copyright &copy; NanTong University School of Geography GIS Studio</p>
+    </div>
+    <script src="/static/script/jquery-3.3.1.js"></script>
+    <script src="/static/bootstrap/js/bootstrap.js"></script>
+    <script>
+        {#创新项目#}
+        $(document).ready(function(){
+            var table = $("#pro_tb")
+            var title = $("#pro_tit")
+            $("#proj").click(function(){
+                $("#proj").addClass("active");
+                $("[id!='proj']").removeClass("active");
+                title.html("大学生创新项目");
+                table.html(" <table class='altrowstable' id='alternatecolor'> <tr> \
+                    <th>项目名称</th>\
+                    <th>批准时间</th>\
+                    <th>团队成员</th>\
+                    <th>颁奖部门</th>\
+                    <th>项目级别</th>\
+                </tr>\
+                {% for pro in pro_hor %}\
+                <tr>\
+                    <td>{{ pro.name }}</td>\
+                    <td>{{ pro.date }}</td>\
+                    <td>{{ pro.members }}</td>\
+                    <td>{{ pro.place }}</td>\
+                    <td>{{ pro.grade }}</td>\
+                </tr>\
+                {% endfor %}\
+            </table>\
+                ")
+            })
+        });
+        {#学科竞赛#}
+        $(document).ready(function(){
+            var table = $("#pro_tb")
+            var title = $("#pro_tit")
+            $("#compt").click(function(){
+                $("#compt").addClass("active");
+                $("[id!='compt']").removeClass("active");
+                title.html("大学生创新项目");
+                table.html("<table class='altrowstable' id='alternatecolor'> <tr> \
+                    <th>获奖情况</th>\
+                    <th>获得时间</th>\
+                    <th>团队成员</th>\
+                    <th>颁奖部门</th>\
+                    <th>项目级别</th>\
+                </tr>\
+                {% for com in com_hor %}\
+                <tr>\
+                    <td>{{ com.name }}</td>\
+                    <td>{{ com.date }}</td>\
+                    <td>{{ com.members }}</td>\
+                    <td>{{ com.place }}</td>\
+                    <td>{{ com.grade }}</td>\
+                </tr>\
+                {% endfor %}\
+            </table>\
+                ")
+            })
+        });
+        {#专利发明#}
+        $(document).ready(function(){
+            var table = $("#pro_tb")
+            var title = $("#pro_tit")
+            $("#invent").click(function(){
+                $("#invent").addClass("active");
+                $("[id!='invent']").removeClass("active");
+                title.html("专利发明");
+                table.html("<table class='altrowstable' id='alternatecolor'> <tr>\
+                    <th>专利名称</th>\
+                    <th>申请时间</th>\
+                    <th>团队成员</th>\
+                    <th>申请号</th>\
+                </tr>\
+                {% for inv in inv_hor %}\
+                <tr>\
+                    <td>{{ inv.name }}</td>\
+                    <td>{{ inv.date }}</td>\
+                    <td>{{ inv.members }}</td>\
+                    <td>{{ inv.place }}</td>\
+                </tr>\
+                {% endfor %}\
+            </table>\
+                ")
+            })
+        });
+        {#论文#}
+        $(document).ready(function(){
+            var table = $("#pro_tb")
+            var title = $("#pro_tit")
+            $("#paper").click(function(){
+                $("#paper").addClass("active");
+                $("[id!='paper']").removeClass("active");
+                title.html("论文获奖及发表");
+                table.html("<table class='altrowstable' id='alternatecolor'> <tr>\
+                    <th>论文情况</th>\
+                    <th>批准时间</th>\
+                    <th>论文作者</th>\
+                    <th>授予单位</th>\
+                    <th>级别</th>\
+                </tr>\
+                {% for paper in paper_hor %}\
+                <tr>\
+                    <td>{{ paper.name }}</td>\
+                    <td>{{ paper.date }}</td>\
+                    <td>{{ paper.members }}</td>\
+                    <td>{{ paper.place }}</td>\
+                    <td>{{ paper.grade }}</td>\
+                </tr>\
+                {% endfor %}\
+            </table>\
+                ")
+            })
+        });
+    </script>
+</body>
+</html>
