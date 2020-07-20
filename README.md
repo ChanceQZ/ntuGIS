@@ -1,2 +1,2 @@
 # ntuGIS
-Nantong University Geographic Information Science major
+Nantong University Geographic Information Science website
